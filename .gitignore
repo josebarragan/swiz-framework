@@ -16,6 +16,7 @@ setEnv.sh
 
 .idea/
 target/
+*.iml
 
 Icon
 Thumbs.db
