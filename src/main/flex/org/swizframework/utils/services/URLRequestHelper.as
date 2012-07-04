@@ -25,7 +25,14 @@ package org.swizframework.utils.services
 	public class URLRequestHelper implements IURLRequestHelper, ISwizAware
 	{
 		protected var _swiz:ISwiz;
-		
+
+		/**
+		 * Default construct
+ 		 */
+		public function URLRequestHelper() {
+			super();
+		}
+
 		public function set swiz( swiz:ISwiz ):void
 		{
 			_swiz = swiz;

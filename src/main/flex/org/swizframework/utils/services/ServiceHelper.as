@@ -25,6 +25,13 @@ package org.swizframework.utils.services
 	{
 		protected var _swiz:ISwiz;
 
+		/**
+		 * Default construct
+		 */
+		public function ServiceHelper() {
+			super();
+		}
+
 		public function set swiz( swiz:ISwiz ):void
 		{
 			_swiz = swiz;
