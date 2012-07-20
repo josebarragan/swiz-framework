@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses/>
+  <includeResources/>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="/Users/pepebarragan/Documents/workspace/swiz-framework/src/main/resources/manifest.xml" namespace="http://swiz.swizframework.org"/>
+  </namespaceManifests>
+</flexLibProperties>
