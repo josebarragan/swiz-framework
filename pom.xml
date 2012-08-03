@@ -27,7 +27,6 @@
             to specify where are the sources -->
     <build>
         <sourceDirectory>src/main/flex</sourceDirectory>
-        <testSourceDirectory>src/test/flex</testSourceDirectory>
         <directory>${basedir}/target</directory>
 
         <plugins>
@@ -214,7 +213,7 @@
         								</goals>
         							</pluginExecutionFilter>
         							<action>
-        								<ignore></ignore>
+        								<ignore/>
         							</action>
         						</pluginExecution>
         					</pluginExecutions>
@@ -227,16 +226,6 @@
 
     <!-- dependencies for fluint and flex framework, all defined as external -->
     <dependencies>
-
-        <!-- flex unit -->
-        <dependency>
-            <groupId>com.adobe.flexunit</groupId>
-            <artifactId>flexunit</artifactId>
-            <version>4.0-rc-1</version>
-            <type>swc</type>
-            <scope>test</scope>
-        </dependency>
-
         <!-- flex sdk -->
         <dependency>
             <groupId>com.adobe.flex.framework</groupId>
