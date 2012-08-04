@@ -3,6 +3,6 @@
   <includeClasses/>
   <includeResources/>
   <namespaceManifests>
-    <namespaceManifestEntry manifest="/Users/pepebarragan/Documents/workspace/swiz-framework/src/main/resources/manifest.xml" namespace="http://swiz.swizframework.org"/>
+    <namespaceManifestEntry manifest="../resources/manifest.xml" namespace="http://swiz.swizframework.org"/>
   </namespaceManifests>
 </flexLibProperties>
