@@ -386,7 +386,7 @@ package org.swizframework.core
 			
 			for( var i:int = 0; i < beanProviders.length; i++ )
 			{
-				// if the provider is a class, intantiate it, if a beanLoader, initialize
+				// if the provider is a class, instantiate it, if a beanLoader, initialize
 				// then replace the item in the array
 				if( beanProviders[ i ] is Class )
 				{
