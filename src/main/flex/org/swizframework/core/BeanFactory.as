@@ -110,7 +110,7 @@ package org.swizframework.core
 			// run any factory processors before setting up any beans
 			runFactoryProcessors();
 			
-			// todo: everything else shoud be delayed if the factoryProcessor initialized an aop autoproxy processor
+			// todo: everything else should be delayed if the factoryProcessor initialized an aop autoproxy processor
 			completeBeanFactorySetup();
 		}
 		
@@ -336,7 +336,7 @@ package org.swizframework.core
 		}
 		
 		/**
-		 * Initialze Bean
+		 * Initialize Bean
 		 */
 		public function setUpBean( bean:Bean ):void
 		{

@@ -5,14 +5,19 @@
 /dist/*
 /docs/*
 
-.actionScriptProperties
-.flexProperties
-.flexLibProperties
-.fxpProperties
-.project
+#.actionScriptProperties
+#.flexProperties
+#.flexLibProperties
+#.fxpProperties
+#.project
+
 .sourceMate
 .sourceMateMetadataSettings
 setEnv.sh
+
+.idea/
+target/
+*.iml
 
 Icon
 Thumbs.db

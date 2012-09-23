@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!-- pom.xml model version -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- this project ID -->
+    <groupId>org.swizframework</groupId>
+    <artifactId>swiz</artifactId>
+    <name>Swiz Framework</name>
+    <version>1.4.1-SNAPSHOT</version>
+    <packaging>swc</packaging>
+
+    <properties>
+        <flex.sdk.version>4.5.1.21328</flex.sdk.version>
+        <mojos.version>4.1-beta</mojos.version>
+        <site.plugin.version>3.0</site.plugin.version>
+        <flex.optimize>true</flex.optimize>
+        <flex.debug>false</flex.debug>
+        <flex.trace>false</flex.trace>
+        <flex.incremental>false</flex.incremental>
+    </properties>
+
+
+    <!-- this project don't follow the standard directory structure, so, need
+            to specify where are the sources -->
+    <build>
+        <sourceDirectory>src/main/flex</sourceDirectory>
+        <directory>${basedir}/target</directory>
+
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.flexmojos</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <version>${mojos.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <coverage>false</coverage>
+                    <debug>${flex.debug}</debug>
+                    <verboseStacktraces>${flex.debug}</verboseStacktraces>
+                    <omitTraceStatements>${flex.trace}</omitTraceStatements>
+                    <optimize>${flex.optimize}</optimize>
+                    <keepAs3Metadatas>
+                        <!-- Swiz -->
+                        <param>Dispatcher</param>
+                        <param>EventHandler</param>
+                        <param>Inject</param>
+                        <param>PostConstruct</param>
+                        <param>PreDestroy</param>
+                        <param>ViewAdded</param>
+                        <param>ViewRemoved</param>
+                    </keepAs3Metadatas>
+                    <includeClasses>
+                        <scan>
+                            <includes>
+                                <include>org.swizframework.**.*</include>
+                            </includes>
+                        </scan>
+                    </includeClasses>
+                    <namespaces>
+                        <namespace>
+                            <uri>http://swiz.swizframework.org</uri>
+                            <manifest>src/main/resources/manifest.xml</manifest>
+                        </namespace>
+                    </namespaces>
+                    <includeNamespaces>
+                        <namespace>http://swiz.swizframework.org</namespace>
+                    </includeNamespaces>
+                    <includeFiles>
+                        <include>design.xml</include>
+                        <include>manifest.xml</include>
+                        <include>metadata.xml</include>
+                    </includeFiles>
+                    <defines>
+                        <property>
+                            <name>CONFIG::flex4</name>
+                            <value>true</value>
+                        </property>
+                        <property>
+                            <name>CONFIG::flex3</name>
+                            <value>false</value>
+                        </property>
+                    </defines>
+                    <storepass/>
+                </configuration>
+                <dependencies>
+                    <!-- Flex-OEM-compiler -->
+                    <dependency>
+                        <groupId>com.adobe.flex</groupId>
+                        <artifactId>compiler</artifactId>
+                        <version>${flex.sdk.version}</version>
+                        <type>pom</type>
+                    </dependency>
+                    <!-- Asdocs templates -->
+                    <dependency>
+                        <groupId>com.adobe.flex.compiler</groupId>
+                        <artifactId>asdoc</artifactId>
+                        <version>${flex.sdk.version}</version>
+                        <classifier>template</classifier>
+                        <type>zip</type>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>create-rsl</id>
+                        <goals>
+                            <goal>create-rsl</goal>
+                        </goals>
+                        <configuration>
+                            <keepAs3Metadatas>
+                                <!-- Flex -->
+                                <keepAs3Metadata>Bindable</keepAs3Metadata>
+                                <!-- Swiz -->
+                                <keepAs3Metadata>Inject</keepAs3Metadata>
+                                <keepAs3Metadata>Dispatcher</keepAs3Metadata>
+                                <keepAs3Metadata>EventHandler</keepAs3Metadata>
+                                <keepAs3Metadata>PostConstruct</keepAs3Metadata>
+                                <keepAs3Metadata>PreDestroy</keepAs3Metadata>
+
+                                <keepAs3Metadata>ViewAdded</keepAs3Metadata>
+                                <keepAs3Metadata>ViewRemoved</keepAs3Metadata>
+                            </keepAs3Metadatas>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <id>package-test</id>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${site.plugin.version}</version>
+                <configuration>
+                    <reportPlugins>
+                        <plugin>
+                            <groupId>org.sonatype.flexmojos</groupId>
+                            <artifactId>flexmojos-maven-plugin</artifactId>
+                            <version>${mojos.version}</version>
+                            <configuration>
+                                <windowTitle>Swiz Framework API Doc</windowTitle>
+                                <footer>Codeoscopic 2012</footer>
+                                <aggregate>false</aggregate>
+                                <ignoreVersionIssues>true</ignoreVersionIssues>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>com.adobe.ac</groupId>
+                            <artifactId>flex-pmd-maven-plugin</artifactId>
+                            <version>1.1</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>com.adobe.ac</groupId>
+                            <artifactId>flex-pmd-cpd-maven-plugin</artifactId>
+                            <version>1.1</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>com.adobe.ac</groupId>
+                            <artifactId>flex-pmd-metrics-maven-plugin</artifactId>
+                            <version>1.1</version>
+                        </plugin>
+                    </reportPlugins>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+        	<plugins>
+        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        		<plugin>
+        			<groupId>org.eclipse.m2e</groupId>
+        			<artifactId>lifecycle-mapping</artifactId>
+        			<version>1.0.0</version>
+        			<configuration>
+        				<lifecycleMappingMetadata>
+        					<pluginExecutions>
+        						<pluginExecution>
+        							<pluginExecutionFilter>
+        								<groupId>
+        									org.sonatype.flexmojos
+        								</groupId>
+        								<artifactId>
+        									flexmojos-maven-plugin
+        								</artifactId>
+        								<versionRange>
+        									[4.1-beta,)
+        								</versionRange>
+        								<goals>
+        									<goal>compile-swc</goal>
+        									<goal>test-compile</goal>
+        								</goals>
+        							</pluginExecutionFilter>
+        							<action>
+        								<ignore/>
+        							</action>
+        						</pluginExecution>
+        					</pluginExecutions>
+        				</lifecycleMappingMetadata>
+        			</configuration>
+        		</plugin>
+        	</plugins>
+        </pluginManagement>
+    </build>
+
+    <!-- dependencies for fluint and flex framework, all defined as external -->
+    <dependencies>
+        <!-- flex sdk -->
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>framework</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>swc</type>
+            <scope>external</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>sparkskins</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>swc</type>
+            <scope>external</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>textLayout</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>swc</type>
+            <scope>external</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>osmf</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>swc</type>
+            <scope>external</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>spark</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>swc</type>
+            <scope>external</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>rpc</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>swc</type>
+            <scope>external</scope>
+        </dependency>
+
+        <!-- flex compiled -->
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>flex-framework</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>swiz-release</id>
+            <name>Swiz Framework Releases</name>
+            <url>http://maven.codeoscopic.com/content/repositories/swiz-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>swiz-snapshot</id>
+            <name>Swiz Framework Snapshots</name>
+            <url>http://maven.codeoscopic.com/content/repositories/swiz-snapshot</url>
+        </snapshotRepository>
+        <site>
+            <id>riality</id>
+            <url>dav:http://dav.codeoscopic.com/private/sites/swiz</url>
+        </site>
+    </distributionManagement>
+
+    <scm>
+        <url>https://github.com/pepebarragan/swiz-framework</url>
+        <connection>scm:git:https://pepebarragan@github.com/pepebarragan/swiz-framework.git</connection>
+    </scm>
+
+    <ciManagement>
+        <system>Hudson</system>
+        <url>http://dev.codeoscopic.com/hudson/</url>
+        <notifiers>
+            <notifier>
+                <type>mail</type>
+                <address>carlos.rovira@codeoscopic.com</address>
+            </notifier>
+            <notifier>
+                <type>mail</type>
+                <address>jose.barragan@codeoscopic.com</address>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+</project>
