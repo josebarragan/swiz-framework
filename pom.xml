@@ -73,6 +73,16 @@
                         <include>manifest.xml</include>
                         <include>metadata.xml</include>
                     </includeFiles>
+                    <defines>
+                        <property>
+                            <name>CONFIG::flex4</name>
+                            <value>true</value>
+                        </property>
+                        <property>
+                            <name>CONFIG::flex3</name>
+                            <value>false</value>
+                        </property>
+                    </defines>
                     <storepass/>
                 </configuration>
                 <dependencies>
