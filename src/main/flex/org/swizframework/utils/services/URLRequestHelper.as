@@ -16,30 +16,38 @@
 
 package org.swizframework.utils.services
 {
-	import mx.rpc.AsyncToken;
+	import flash.net.URLLoader;
+	import flash.net.URLRequest;
 	
 	import org.swizframework.core.ISwiz;
 	import org.swizframework.core.ISwizAware;
-
-	public class ServiceHelper implements IServiceHelper, ISwizAware
+	
+	public class URLRequestHelper implements IURLRequestHelper, ISwizAware
 	{
 		protected var _swiz:ISwiz;
+
+		/**
+		 * Default construct
+ 		 */
+		public function URLRequestHelper() {
+			super();
+		}
 
 		public function set swiz( swiz:ISwiz ):void
 		{
 			_swiz = swiz;
 		}
-
-		public function executeServiceCall( call:AsyncToken, resultHandler:Function, faultHandler:Function = null, handlerArgs:Array = null ):AsyncToken
+		
+		/** Delegates execute url request call to Swiz */
+		public function executeURLRequest( request:URLRequest, resultHandler:Function, faultHandler:Function = null,
+										   progressHandler:Function = null, httpStatusHandler:Function = null,
+										   handlerArgs:Array = null ):URLLoader
 		{
-			// use default fault handler defined for swiz instance if not provided
-			// check if swiz is set which is not the case if ServiceHelper is used in a testing environment
-			if( faultHandler == null && _swiz != null && _swiz.config.defaultFaultHandler != null )
+			// use default fault handler defined for swiz instance if not provided									  	
+			if( faultHandler == null && _swiz.config.defaultFaultHandler != null )
 				faultHandler = _swiz.config.defaultFaultHandler;
-
-			call.addResponder( new SwizResponder( resultHandler, faultHandler, handlerArgs ) );
 			
-			return call;
+			return new SwizURLRequest( request, resultHandler, faultHandler, progressHandler, httpStatusHandler, handlerArgs ).loader;
 		}
 	}
 }

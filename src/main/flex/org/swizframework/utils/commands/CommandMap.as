@@ -31,7 +31,14 @@ package org.swizframework.utils.commands
 		// ========================================
 		// public properties
 		// ========================================
-		
+
+		/**
+		 * Default construct
+		 */
+		public function CommandMap() {
+			super();
+		}
+
 		/**
 		 * Setter to satisfy ISwizAware interface contract.
 		 * 
