@@ -1,3 +1,11 @@
+Releases:
+
+Swiz 1.4.1
+
+* Maven Version of Swiz Framework
+
+==========================================
+
 Swiz is a brutally simple micro-architecture for creating Rich Internet Applications with ActionScript 3 and Adobe Flex
 
 ## How to Contribute
