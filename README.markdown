@@ -1,8 +1,12 @@
 ## Releases:
 
+Fork of Swiz Framework with modifications used by Codeoscopic S.A.
+
 # Swiz 1.4.1
 
 * Maven Version of Swiz Framework
+* Fixed Prototype leak by Jeffrey Barrus
+* Fix some Flash Builder configurations (manifest,...)
 
 ==========================================
 
