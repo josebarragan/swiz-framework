@@ -1,6 +1,6 @@
-Releases:
+## Releases:
 
-Swiz 1.4.1
+# Swiz 1.4.1
 
 * Maven Version of Swiz Framework
 
