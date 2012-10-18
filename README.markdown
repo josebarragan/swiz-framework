@@ -1,3 +1,19 @@
+## Releases:
+
+Fork of Swiz Framework with modifications used by Codeoscopic S.A.
+
+# Swiz 1.4.1.1
+
+* Update Flex SDK version to 4.6.b.23201
+
+# Swiz 1.4.1
+
+* Maven Version of Swiz Framework
+* Fixed Prototype leak by Jeffrey Barrus
+* Fix some Flash Builder configurations (manifest,...)
+
+==========================================
+
 Swiz is a brutally simple micro-architecture for creating Rich Internet Applications with ActionScript 3 and Adobe Flex
 
 ## How to Contribute

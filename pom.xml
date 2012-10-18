@@ -12,7 +12,7 @@
     <packaging>swc</packaging>
 
     <properties>
-        <flex.sdk.version>4.5.1.21328</flex.sdk.version>
+        <flex.sdk.version>4.6.b.23201</flex.sdk.version>
         <mojos.version>4.1-beta</mojos.version>
         <site.plugin.version>3.0</site.plugin.version>
         <flex.optimize>true</flex.optimize>
