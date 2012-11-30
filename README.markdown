@@ -2,6 +2,11 @@
 
 Fork of Swiz Framework with modifications used by Codeoscopic S.A.
 
+# Swiz 1.4.2
+
+* Support for nested object creation (fixing crash when there's no place holder object)
+* Fix recursive endless loop when source of Bean is a Bean
+
 # Swiz 1.4.1.1
 
 * Update Flex SDK version to 4.6.b.23201

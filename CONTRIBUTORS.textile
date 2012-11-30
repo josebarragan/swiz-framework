@@ -10,3 +10,5 @@ h2. Framework Contributors
 * "Cliff Meyers":http://github.com/cliffmeyers
 * "Brian Kotek":http://github.com/brian428
 * "Adam Lehman":adrocknaphobia@gmail.com
+* "Jose Barragan":https://github.com/pepebarragan
+* "Carlos Rovira":https://github.com/carlosrovira
