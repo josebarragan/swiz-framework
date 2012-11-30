@@ -296,8 +296,8 @@
     </distributionManagement>
 
     <scm>
-        <url>https://github.com/codeoscopic/swiz-framework</url>
-        <connection>scm:git:https://pepebarragan@github.com/codeoscopic/swiz-framework.git</connection>
+        <url>https://github.com/pepebarragan/swiz-framework</url>
+        <connection>scm:git:https://pepebarragan@github.com/pepebarragan/swiz-framework.git</connection>
     </scm>
 
     <ciManagement>
