@@ -8,7 +8,7 @@
     <groupId>org.swizframework</groupId>
     <artifactId>swiz</artifactId>
     <name>Swiz Framework</name>
-    <version>1.4.2-SNAPSHOT</version>
+    <version>1.4.3-SNAPSHOT</version>
     <packaging>swc</packaging>
 
     <properties>
@@ -21,6 +21,60 @@
         <flex.incremental>false</flex.incremental>
     </properties>
 
+	<profiles>
+        <profile>
+            <id>release</id>
+
+            <activation>
+                <property>
+                    <name>profile</name>
+                    <value>release</value>
+                </property>
+            </activation>
+
+            <properties>
+                <maven.test.skip>false</maven.test.skip>
+                <maven.test.failure.ignore>true</maven.test.failure.ignore>
+            </properties>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <version>2.7</version>
+                        <configuration>
+                            <updateReleaseInfo>true</updateReleaseInfo>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.3.2</version>
+                        <configuration>
+                            <preparationGoals>clean deploy</preparationGoals>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>develop</id>
+
+            <activation>
+                <property>
+                    <name>profile</name>
+                    <value>develop</value>
+                </property>
+
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <properties>
+                <maven.test.skip>false</maven.test.skip>
+                <maven.test.failure.ignore>true</maven.test.failure.ignore>
+            </properties>
+        </profile>
+    </profiles>
 
     <!-- this project don't follow the standard directory structure, so, need
             to specify where are the sources -->
@@ -296,9 +350,10 @@
     </distributionManagement>
 
     <scm>
-        <url>https://github.com/codeoscopic/swiz-framework</url>
-        <connection>scm:git:https://pepebarragan@github.com/codeoscopic/swiz-framework.git</connection>
-    </scm>
+        <url>https://github.com/pepebarragan/swiz-framework</url>
+        <connection>scm:git:https://pepebarragan@github.com/pepebarragan/swiz-framework.git</connection>
+      	<tag>HEAD</tag>
+  	</scm>
 
     <ciManagement>
         <system>Hudson</system>

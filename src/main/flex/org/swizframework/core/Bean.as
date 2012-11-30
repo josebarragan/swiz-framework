@@ -87,7 +87,13 @@ package org.swizframework.core
 		
 		public function toString():String
 		{
-			return "Bean{ source: " + source + ", name: " + name + " }";
+			if(source is Bean)
+			{
+				return "Bean{ source: Bean, name: " + name + " }";
+			} else
+			{
+				return "Bean{ source: " + source + ", name: " + name + " }";
+			}
 		}
 	}
 }

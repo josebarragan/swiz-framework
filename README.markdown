@@ -2,6 +2,10 @@
 
 Fork of Swiz Framework with modifications used by Codeoscopic S.A.
 
+# Swiz 1.4.1.1
+
+* Update Flex SDK version to 4.6.b.23201
+
 # Swiz 1.4.1
 
 * Maven Version of Swiz Framework

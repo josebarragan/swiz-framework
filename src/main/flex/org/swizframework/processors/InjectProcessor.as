@@ -185,14 +185,22 @@ package org.swizframework.processors
 		}
 		
 		/**
-		 *
+		 * Support for nested object creation (fixing crash when there's no place holder object)
 		 */
 		protected function getDestinationObject( destObject:Object, chainString:String ):Object
 		{
 			var arr:Array = chainString.split( "." );
 			var dest:Object = destObject;
 			while( arr.length > 1 )
-				dest = dest[ arr.shift() ];
+			{
+				var prop:String = arr.shift();
+				if(dest[ prop ] == null)
+				{
+					dest[prop] = {};
+				}
+				dest = dest[ prop ];
+			}
+			
 			return dest;
 		}
 		
