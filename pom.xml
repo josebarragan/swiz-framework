@@ -8,7 +8,7 @@
     <groupId>org.swizframework</groupId>
     <artifactId>swiz</artifactId>
     <name>Swiz Framework</name>
-    <version>1.4.2-SNAPSHOT</version>
+    <version>1.4.2</version>
     <packaging>swc</packaging>
 
     <properties>
@@ -352,7 +352,8 @@
     <scm>
         <url>https://github.com/pepebarragan/swiz-framework</url>
         <connection>scm:git:https://pepebarragan@github.com/pepebarragan/swiz-framework.git</connection>
-    </scm>
+      <tag>v1.4.2</tag>
+  </scm>
 
     <ciManagement>
         <system>Hudson</system>
