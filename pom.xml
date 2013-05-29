@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <!-- pom.xml model version -->
     <modelVersion>4.0.0</modelVersion>
@@ -12,16 +13,21 @@
     <packaging>swc</packaging>
 
     <properties>
-        <flex.sdk.version>4.6.b.23201</flex.sdk.version>
-        <mojos.version>4.1-beta</mojos.version>
-        <site.plugin.version>3.0</site.plugin.version>
-        <flex.optimize>true</flex.optimize>
-        <flex.debug>false</flex.debug>
-        <flex.trace>false</flex.trace>
+        <!-- Plugins versions -->
+        <mojos.version>6.1</mojos.version>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+
         <flex.incremental>false</flex.incremental>
+
+        <!-- Flex Framework version -->
+        <flex.version>4.6.0.23201</flex.version>
+        <flex.text.layout.version>2.0.0.232</flex.text.layout.version>
+        <flex.osmf.version>1.0.0.16316</flex.osmf.version>
+
+        <player.version>11.1</player.version>
     </properties>
 
-	<profiles>
+    <profiles>
         <profile>
             <id>release</id>
 
@@ -35,6 +41,10 @@
             <properties>
                 <maven.test.skip>false</maven.test.skip>
                 <maven.test.failure.ignore>true</maven.test.failure.ignore>
+
+                <flex.optimize>true</flex.optimize>
+                <flex.debug>false</flex.debug>
+                <flex.trace>false</flex.trace>
             </properties>
 
             <build>
@@ -70,8 +80,12 @@
             </activation>
 
             <properties>
-                <maven.test.skip>false</maven.test.skip>
+                <maven.test.skip>true</maven.test.skip>
                 <maven.test.failure.ignore>true</maven.test.failure.ignore>
+
+                <flex.optimize>false</flex.optimize>
+                <flex.debug>true</flex.debug>
+                <flex.trace>true</flex.trace>
             </properties>
         </profile>
     </profiles>
@@ -84,7 +98,14 @@
 
         <plugins>
             <plugin>
-                <groupId>org.sonatype.flexmojos</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>${maven.compiler.encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.flexmojos.oss</groupId>
                 <artifactId>flexmojos-maven-plugin</artifactId>
                 <version>${mojos.version}</version>
                 <extensions>true</extensions>
@@ -135,21 +156,21 @@
                             <value>false</value>
                         </property>
                     </defines>
-                    <storepass />
+                    <storepass/>
                 </configuration>
                 <dependencies>
                     <!-- Flex-OEM-compiler -->
                     <dependency>
                         <groupId>com.adobe.flex</groupId>
                         <artifactId>compiler</artifactId>
-                        <version>${flex.sdk.version}</version>
+                        <version>${flex.version}</version>
                         <type>pom</type>
                     </dependency>
                     <!-- Asdocs templates -->
                     <dependency>
                         <groupId>com.adobe.flex.compiler</groupId>
                         <artifactId>asdoc</artifactId>
-                        <version>${flex.sdk.version}</version>
+                        <version>${flex.version}</version>
                         <classifier>template</classifier>
                         <type>zip</type>
                     </dependency>
@@ -206,11 +227,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>${site.plugin.version}</version>
+                <version>3.1</version>
                 <configuration>
                     <reportPlugins>
                         <plugin>
-                            <groupId>org.sonatype.flexmojos</groupId>
+                            <groupId>net.flexmojos.oss</groupId>
                             <artifactId>flexmojos-maven-plugin</artifactId>
                             <version>${mojos.version}</version>
                             <configuration>
@@ -240,94 +261,96 @@
             </plugin>
         </plugins>
         <pluginManagement>
-        	<plugins>
-        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-        		<plugin>
-        			<groupId>org.eclipse.m2e</groupId>
-        			<artifactId>lifecycle-mapping</artifactId>
-        			<version>1.0.0</version>
-        			<configuration>
-        				<lifecycleMappingMetadata>
-        					<pluginExecutions>
-        						<pluginExecution>
-        							<pluginExecutionFilter>
-        								<groupId>
-        									org.sonatype.flexmojos
-        								</groupId>
-        								<artifactId>
-        									flexmojos-maven-plugin
-        								</artifactId>
-        								<versionRange>
-        									[4.1-beta,)
-        								</versionRange>
-        								<goals>
-        									<goal>compile-swc</goal>
-        									<goal>test-compile</goal>
-        								</goals>
-        							</pluginExecutionFilter>
-        							<action>
-        								<ignore />
-        							</action>
-        						</pluginExecution>
-        					</pluginExecutions>
-        				</lifecycleMappingMetadata>
-        			</configuration>
-        		</plugin>
-        	</plugins>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings
+                        only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            net.flexmojos.oss
+                                        </groupId>
+                                        <artifactId>
+                                            flexmojos-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [5.0,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>compile-swf</goal>
+                                            <goal>compile-swc</goal>
+                                            <goal>test-compile</goal>
+                                            <goal>manifest</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore/>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
         </pluginManagement>
     </build>
 
-    <!-- dependencies for fluint and flex framework, all defined as external -->
     <dependencies>
-        <!-- flex sdk -->
+        <!-- Flex Framework -->
         <dependency>
             <groupId>com.adobe.flex.framework</groupId>
             <artifactId>framework</artifactId>
-            <version>${flex.sdk.version}</version>
+            <version>${flex.version}</version>
             <type>swc</type>
             <scope>external</scope>
         </dependency>
         <dependency>
             <groupId>com.adobe.flex.framework</groupId>
             <artifactId>sparkskins</artifactId>
-            <version>${flex.sdk.version}</version>
+            <version>${flex.version}</version>
             <type>swc</type>
             <scope>external</scope>
         </dependency>
         <dependency>
             <groupId>com.adobe.flex.framework</groupId>
             <artifactId>textLayout</artifactId>
-            <version>${flex.sdk.version}</version>
+            <version>${flex.text.layout.version}</version>
             <type>swc</type>
             <scope>external</scope>
         </dependency>
         <dependency>
             <groupId>com.adobe.flex.framework</groupId>
             <artifactId>osmf</artifactId>
-            <version>${flex.sdk.version}</version>
+            <version>${flex.osmf.version}</version>
             <type>swc</type>
             <scope>external</scope>
         </dependency>
         <dependency>
             <groupId>com.adobe.flex.framework</groupId>
             <artifactId>spark</artifactId>
-            <version>${flex.sdk.version}</version>
+            <version>${flex.version}</version>
             <type>swc</type>
             <scope>external</scope>
         </dependency>
         <dependency>
             <groupId>com.adobe.flex.framework</groupId>
             <artifactId>rpc</artifactId>
-            <version>${flex.sdk.version}</version>
+            <version>${flex.version}</version>
             <type>swc</type>
             <scope>external</scope>
         </dependency>
 
-        <!-- flex compiled -->
+        <!-- Flex compiler -->
         <dependency>
             <groupId>com.adobe.flex.framework</groupId>
             <artifactId>flex-framework</artifactId>
-            <version>${flex.sdk.version}</version>
+            <version>${flex.version}</version>
             <type>pom</type>
         </dependency>
     </dependencies>
@@ -352,12 +375,12 @@
     <scm>
         <url>https://github.com/pepebarragan/swiz-framework</url>
         <connection>scm:git:https://pepebarragan@github.com/pepebarragan/swiz-framework.git</connection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <ciManagement>
         <system>Hudson</system>
-        <url>http://dev.codeoscopic.com/hudson/</url>
+        <url>http://ci.codeoscopic.com</url>
         <notifiers>
             <notifier>
                 <type>mail</type>
