@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <!-- pom.xml model version -->
     <modelVersion>4.0.0</modelVersion>
@@ -13,7 +14,7 @@
 
     <properties>
         <!-- Plugins versions -->
-        <mojos.version>6.0.0</mojos.version>
+        <mojos.version>6.1</mojos.version>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 
         <flex.incremental>false</flex.incremental>
@@ -26,7 +27,7 @@
         <player.version>11.1</player.version>
     </properties>
 
-	<profiles>
+    <profiles>
         <profile>
             <id>release</id>
 
@@ -79,7 +80,7 @@
             </activation>
 
             <properties>
-                <maven.test.skip>false</maven.test.skip>
+                <maven.test.skip>true</maven.test.skip>
                 <maven.test.failure.ignore>true</maven.test.failure.ignore>
 
                 <flex.optimize>false</flex.optimize>
@@ -155,7 +156,7 @@
                             <value>false</value>
                         </property>
                     </defines>
-                    <storepass />
+                    <storepass/>
                 </configuration>
                 <dependencies>
                     <!-- Flex-OEM-compiler -->
@@ -260,43 +261,43 @@
             </plugin>
         </plugins>
         <pluginManagement>
-        	<plugins>
-        		<!--This plugin's configuration is used to store Eclipse m2e settings
-        		        only. It has no influence on the Maven build itself.-->
-        		<plugin>
-        			<groupId>org.eclipse.m2e</groupId>
-        			<artifactId>lifecycle-mapping</artifactId>
-        			<version>1.0.0</version>
-        			<configuration>
-        				<lifecycleMappingMetadata>
-        					<pluginExecutions>
-        						<pluginExecution>
-        							<pluginExecutionFilter>
-        								<groupId>
-        									net.flexmojos.oss
-        								</groupId>
-        								<artifactId>
-        									flexmojos-maven-plugin
-        								</artifactId>
-        								<versionRange>
-        									[5.0,)
-        								</versionRange>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings
+                        only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            net.flexmojos.oss
+                                        </groupId>
+                                        <artifactId>
+                                            flexmojos-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [5.0,)
+                                        </versionRange>
                                         <goals>
                                             <goal>compile-swf</goal>
                                             <goal>compile-swc</goal>
                                             <goal>test-compile</goal>
                                             <goal>manifest</goal>
                                         </goals>
-        							</pluginExecutionFilter>
-        							<action>
-        								<ignore />
-        							</action>
-        						</pluginExecution>
-        					</pluginExecutions>
-        				</lifecycleMappingMetadata>
-        			</configuration>
-        		</plugin>
-        	</plugins>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore/>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
         </pluginManagement>
     </build>
 
@@ -374,12 +375,12 @@
     <scm>
         <url>https://github.com/pepebarragan/swiz-framework</url>
         <connection>scm:git:https://pepebarragan@github.com/pepebarragan/swiz-framework.git</connection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <ciManagement>
         <system>Hudson</system>
-        <url>http://dev.codeoscopic.com/hudson/</url>
+        <url>http://ci.codeoscopic.com</url>
         <notifiers>
             <notifier>
                 <type>mail</type>
