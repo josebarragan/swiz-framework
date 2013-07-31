@@ -19,11 +19,8 @@
         <flex.incremental>false</flex.incremental>
 
         <!-- Flex Framework version -->
-        <flex.version>4.6.0.23201</flex.version>
-        <flex.text.layout.version>2.0.0.232</flex.text.layout.version>
+        <flex.version>4.9.1.1447119</flex.version>
         <flex.osmf.version>1.0.0.16316</flex.osmf.version>
-
-        <player.version>11.1</player.version>
     </properties>
 
     <profiles>
@@ -157,14 +154,20 @@
                     <reduceSortCPool>false</reduceSortCPool>
                     <reduceMatryoshkaType>none</reduceMatryoshkaType>
                     <keepAs3Metadatas>
+                        <!-- Flex -->
+                        <keepAs3Metadata>Bindable</keepAs3Metadata>
+                        <keepAs3Metadata>Managed</keepAs3Metadata>
+                        <keepAs3Metadata>ChangeEvent</keepAs3Metadata>
+                        <keepAs3Metadata>NonCommittingChangeEvent</keepAs3Metadata>
+                        <keepAs3Metadata>Transient</keepAs3Metadata>
                         <!-- Swiz -->
-                        <param>Dispatcher</param>
-                        <param>EventHandler</param>
-                        <param>Inject</param>
-                        <param>PostConstruct</param>
-                        <param>PreDestroy</param>
-                        <param>ViewAdded</param>
-                        <param>ViewRemoved</param>
+                        <keepAs3Metadata>Inject</keepAs3Metadata>
+                        <keepAs3Metadata>Dispatcher</keepAs3Metadata>
+                        <keepAs3Metadata>EventHandler</keepAs3Metadata>
+                        <keepAs3Metadata>PostConstruct</keepAs3Metadata>
+                        <keepAs3Metadata>PreDestroy</keepAs3Metadata>
+                        <keepAs3Metadata>ViewAdded</keepAs3Metadata>
+                        <keepAs3Metadata>ViewRemoved</keepAs3Metadata>
                     </keepAs3Metadatas>
                     <includeClasses>
                         <scan>
@@ -202,14 +205,14 @@
                 <dependencies>
                     <!-- Flex-OEM-compiler -->
                     <dependency>
-                        <groupId>com.adobe.flex</groupId>
+                        <groupId>org.apache.flex</groupId>
                         <artifactId>compiler</artifactId>
                         <version>${flex.version}</version>
                         <type>pom</type>
                     </dependency>
                     <!-- Asdoc templates -->
                     <dependency>
-                        <groupId>com.adobe.flex.compiler</groupId>
+                        <groupId>org.apache.flex.compiler</groupId>
                         <artifactId>asdoc</artifactId>
                         <version>${flex.version}</version>
                         <classifier>template</classifier>
@@ -226,6 +229,10 @@
                             <keepAs3Metadatas>
                                 <!-- Flex -->
                                 <keepAs3Metadata>Bindable</keepAs3Metadata>
+                                <keepAs3Metadata>Managed</keepAs3Metadata>
+                                <keepAs3Metadata>ChangeEvent</keepAs3Metadata>
+                                <keepAs3Metadata>NonCommittingChangeEvent</keepAs3Metadata>
+                                <keepAs3Metadata>Transient</keepAs3Metadata>
                                 <!-- Swiz -->
                                 <keepAs3Metadata>Inject</keepAs3Metadata>
                                 <keepAs3Metadata>Dispatcher</keepAs3Metadata>
@@ -305,23 +312,23 @@
     <dependencies>
         <!-- Flex Framework -->
         <dependency>
-            <groupId>com.adobe.flex.framework</groupId>
+            <groupId>org.apache.flex.framework</groupId>
             <artifactId>framework</artifactId>
             <version>${flex.version}</version>
             <type>swc</type>
             <scope>external</scope>
         </dependency>
         <dependency>
-            <groupId>com.adobe.flex.framework</groupId>
+            <groupId>org.apache.flex.framework</groupId>
             <artifactId>sparkskins</artifactId>
             <version>${flex.version}</version>
             <type>swc</type>
             <scope>external</scope>
         </dependency>
         <dependency>
-            <groupId>com.adobe.flex.framework</groupId>
+            <groupId>org.apache.flex.framework</groupId>
             <artifactId>textLayout</artifactId>
-            <version>${flex.text.layout.version}</version>
+            <version>${flex.version}</version>
             <type>swc</type>
             <scope>external</scope>
         </dependency>
@@ -333,14 +340,14 @@
             <scope>external</scope>
         </dependency>
         <dependency>
-            <groupId>com.adobe.flex.framework</groupId>
+            <groupId>org.apache.flex.framework</groupId>
             <artifactId>spark</artifactId>
             <version>${flex.version}</version>
             <type>swc</type>
             <scope>external</scope>
         </dependency>
         <dependency>
-            <groupId>com.adobe.flex.framework</groupId>
+            <groupId>org.apache.flex.framework</groupId>
             <artifactId>rpc</artifactId>
             <version>${flex.version}</version>
             <type>swc</type>
@@ -365,7 +372,7 @@
 
         <!-- Flex compiler -->
         <dependency>
-            <groupId>com.adobe.flex.framework</groupId>
+            <groupId>org.apache.flex.framework</groupId>
             <artifactId>flex-framework</artifactId>
             <version>${flex.version}</version>
             <type>pom</type>
