@@ -62,6 +62,39 @@
                             <preparationGoals>clean deploy</preparationGoals>
                         </configuration>
                     </plugin>
+                    <plugin>
+                        <groupId>net.flexmojos.oss</groupId>
+                        <artifactId>flexmojos-maven-plugin</artifactId>
+                        <version>${mojos.version}</version>
+                        <extensions>true</extensions>
+                        <executions>
+                            <!-- Optimize swf's -->
+                            <execution>
+                                <id>optapparat</id>
+                                <goals>
+                                    <goal>optimize-swf</goal>
+                                </goals>
+                                <configuration>
+                                    <keepAs3Metadatas>
+                                        <!-- Flex -->
+                                        <keepAs3Metadata>Bindable</keepAs3Metadata>
+                                        <keepAs3Metadata>Managed</keepAs3Metadata>
+                                        <keepAs3Metadata>ChangeEvent</keepAs3Metadata>
+                                        <keepAs3Metadata>NonCommittingChangeEvent</keepAs3Metadata>
+                                        <keepAs3Metadata>Transient</keepAs3Metadata>
+                                        <!-- Swiz -->
+                                        <keepAs3Metadata>Inject</keepAs3Metadata>
+                                        <keepAs3Metadata>Dispatcher</keepAs3Metadata>
+                                        <keepAs3Metadata>EventHandler</keepAs3Metadata>
+                                        <keepAs3Metadata>PostConstruct</keepAs3Metadata>
+                                        <keepAs3Metadata>PreDestroy</keepAs3Metadata>
+                                        <keepAs3Metadata>ViewAdded</keepAs3Metadata>
+                                        <keepAs3Metadata>ViewRemoved</keepAs3Metadata>
+                                    </keepAs3Metadatas>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -115,6 +148,14 @@
                     <omitTraceStatements>${flex.trace}</omitTraceStatements>
                     <optimize>${flex.optimize}</optimize>
                     <optimizeRsl>${flex.optimize}</optimizeRsl>
+                    <reduce>${flex.optimize}</reduce>
+                    <strip>${flex.optimize}</strip>
+
+                    <reduceQuality>0.8</reduceQuality>
+                    <reduceLzma>false</reduceLzma>
+                    <reduceMergeCF>false</reduceMergeCF>
+                    <reduceSortCPool>false</reduceSortCPool>
+                    <reduceMatryoshkaType>none</reduceMatryoshkaType>
                     <keepAs3Metadatas>
                         <!-- Swiz -->
                         <param>Dispatcher</param>
@@ -166,7 +207,7 @@
                         <version>${flex.version}</version>
                         <type>pom</type>
                     </dependency>
-                    <!-- Asdocs templates -->
+                    <!-- Asdoc templates -->
                     <dependency>
                         <groupId>com.adobe.flex.compiler</groupId>
                         <artifactId>asdoc</artifactId>
@@ -191,7 +232,6 @@
                                 <keepAs3Metadata>EventHandler</keepAs3Metadata>
                                 <keepAs3Metadata>PostConstruct</keepAs3Metadata>
                                 <keepAs3Metadata>PreDestroy</keepAs3Metadata>
-
                                 <keepAs3Metadata>ViewAdded</keepAs3Metadata>
                                 <keepAs3Metadata>ViewRemoved</keepAs3Metadata>
                             </keepAs3Metadatas>
@@ -305,6 +345,22 @@
             <version>${flex.version}</version>
             <type>swc</type>
             <scope>external</scope>
+        </dependency>
+
+        <!-- Theme -->
+        <dependency>
+            <groupId>org.apache.flex.framework.themes</groupId>
+            <artifactId>spark</artifactId>
+            <version>${flex.version}</version>
+            <type>swc</type>
+            <scope>theme</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flex.framework.themes</groupId>
+            <artifactId>mxfte</artifactId>
+            <version>${flex.version}</version>
+            <type>swc</type>
+            <scope>theme</scope>
         </dependency>
 
         <!-- Flex compiler -->
