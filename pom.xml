@@ -20,7 +20,7 @@
 
         <!-- Flex Framework version -->
         <flex.version>4.6.0.23201</flex.version>
-        <flex.text.layout.version>2.0.0.232</flex.text.layout.version>
+        <flex.text.layout.version>3.0.0.29</flex.text.layout.version>
         <flex.osmf.version>1.0.0.16316</flex.osmf.version>
 
         <player.version>11.1</player.version>
@@ -82,6 +82,7 @@
                                         <keepAs3Metadata>ChangeEvent</keepAs3Metadata>
                                         <keepAs3Metadata>NonCommittingChangeEvent</keepAs3Metadata>
                                         <keepAs3Metadata>Transient</keepAs3Metadata>
+
                                         <!-- Swiz -->
                                         <keepAs3Metadata>Inject</keepAs3Metadata>
                                         <keepAs3Metadata>Dispatcher</keepAs3Metadata>
@@ -156,16 +157,25 @@
                     <reduceMergeCF>false</reduceMergeCF>
                     <reduceSortCPool>false</reduceSortCPool>
                     <reduceMatryoshkaType>none</reduceMatryoshkaType>
+
                     <keepAs3Metadatas>
+                        <!-- Flex -->
+                        <keepAs3Metadata>Bindable</keepAs3Metadata>
+                        <keepAs3Metadata>Managed</keepAs3Metadata>
+                        <keepAs3Metadata>ChangeEvent</keepAs3Metadata>
+                        <keepAs3Metadata>NonCommittingChangeEvent</keepAs3Metadata>
+                        <keepAs3Metadata>Transient</keepAs3Metadata>
+
                         <!-- Swiz -->
-                        <param>Dispatcher</param>
-                        <param>EventHandler</param>
-                        <param>Inject</param>
-                        <param>PostConstruct</param>
-                        <param>PreDestroy</param>
-                        <param>ViewAdded</param>
-                        <param>ViewRemoved</param>
+                        <keepAs3Metadata>Inject</keepAs3Metadata>
+                        <keepAs3Metadata>Dispatcher</keepAs3Metadata>
+                        <keepAs3Metadata>EventHandler</keepAs3Metadata>
+                        <keepAs3Metadata>PostConstruct</keepAs3Metadata>
+                        <keepAs3Metadata>PreDestroy</keepAs3Metadata>
+                        <keepAs3Metadata>ViewAdded</keepAs3Metadata>
+                        <keepAs3Metadata>ViewRemoved</keepAs3Metadata>
                     </keepAs3Metadatas>
+
                     <includeClasses>
                         <scan>
                             <includes>
@@ -226,6 +236,11 @@
                             <keepAs3Metadatas>
                                 <!-- Flex -->
                                 <keepAs3Metadata>Bindable</keepAs3Metadata>
+                                <keepAs3Metadata>Managed</keepAs3Metadata>
+                                <keepAs3Metadata>ChangeEvent</keepAs3Metadata>
+                                <keepAs3Metadata>NonCommittingChangeEvent</keepAs3Metadata>
+                                <keepAs3Metadata>Transient</keepAs3Metadata>
+
                                 <!-- Swiz -->
                                 <keepAs3Metadata>Inject</keepAs3Metadata>
                                 <keepAs3Metadata>Dispatcher</keepAs3Metadata>
@@ -275,8 +290,8 @@
                             <artifactId>flexmojos-maven-plugin</artifactId>
                             <version>${mojos.version}</version>
                             <configuration>
-                                <windowTitle>Swiz Framework API Doc</windowTitle>
-                                <footer>Codeoscopic 2012</footer>
+                                <windowTitle>Swiz Framework API</windowTitle>
+                                <footer>Codeoscopic 2014</footer>
                                 <aggregate>false</aggregate>
                                 <ignoreVersionIssues>true</ignoreVersionIssues>
                             </configuration>
@@ -347,16 +362,16 @@
             <scope>external</scope>
         </dependency>
 
-        <!-- Theme -->
+        <!-- Flex Themes -->
         <dependency>
-            <groupId>org.apache.flex.framework.themes</groupId>
+            <groupId>com.adobe.flex.framework.themes</groupId>
             <artifactId>spark</artifactId>
             <version>${flex.version}</version>
             <type>swc</type>
             <scope>theme</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.flex.framework.themes</groupId>
+            <groupId>com.adobe.flex.framework.themes</groupId>
             <artifactId>mxfte</artifactId>
             <version>${flex.version}</version>
             <type>swc</type>
@@ -390,8 +405,8 @@
     </distributionManagement>
 
     <scm>
-        <url>https://github.com/pepebarragan/swiz-framework</url>
-        <connection>scm:git:https://pepebarragan@github.com/pepebarragan/swiz-framework.git</connection>
+        <url>https://github.com/josebarragan/swiz-framework</url>
+        <connection>scm:git:https://josebarragan@github.com/josebarragan/swiz-framework.git</connection>
         <tag>HEAD</tag>
     </scm>
 
