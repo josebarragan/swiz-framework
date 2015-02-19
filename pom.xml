@@ -233,6 +233,9 @@
                             <goal>create-rsl</goal>
                         </goals>
                         <configuration>
+                            <optimizeRsl>${flex.optimize}</optimizeRsl>
+                            <reduce>${flex.optimize}</reduce>
+                            <strip>${flex.optimize}</strip>
                             <keepAs3Metadatas>
                                 <!-- Flex -->
                                 <keepAs3Metadata>Bindable</keepAs3Metadata>
